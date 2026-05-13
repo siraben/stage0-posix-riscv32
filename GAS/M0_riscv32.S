@@ -303,7 +303,6 @@ Store_Atom_loop:
     sw a0, 8(a3)                      # HEAD->TEXT = STRING
     jal copy_string                   # Copy the string
 
-    mv a0, a3                         # Return HEAD
     lw ra, 0(sp)                      # restore ra
     lw a1, 4(sp)                      # restore a1
     lw a2, 8(sp)                      # restore a2
@@ -558,7 +557,7 @@ Process_String_Next:
 string_length:
     addi sp, sp, -8                   # allocate stack
     sw a1, 0(sp)                      # protect a1
-    sw a2, 8(sp)                      # protect a2
+    sw a2, 4(sp)                      # protect a2
 
     mv a1, a0                         # Set S
     mv a2, zero                       # INDEX = 0
